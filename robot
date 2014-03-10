@@ -1,15 +1,18 @@
+#include <Servo.h> 
+
+Servo leftservo;
+Servo rightservo;
 
 
-void setup(){
-  pinMode(12,OUTPUT);
-  pinMode(11,OUTPUT);
-  pinMode(9,OUTPUT);
-  pinMode(8,OUTPUT);
-}
+void setup() 
+{ 
+  leftservo.attach(10);
+  leftservo.write(90);
+  rightservo.attach(9);
+  rightservo.write(90);
+} 
 
-void loop(){
-  digitalWrite(11,HIGH);
-  delay(1000);
-  digitalWrite(11,LOW);
-}
-  
+void loop() {
+leftservo.write(0);
+rightservo.write(0);
+} 
