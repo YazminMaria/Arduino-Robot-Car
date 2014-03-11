@@ -9,8 +9,7 @@ void setup()
   Leftservo.attach(10,90,180);
 } 
 
-void foward()
-{
+void foward(){
  for(int i=110; i<180; i++)
  {
   Rightservo.write(i);
@@ -21,7 +20,17 @@ Leftservo.write(i);
 }  
 }
 
+void reverse(){
+ for(int i=50; i<90; i++)
+ {
+  Rightservo.write(i);
+}
+ for(int i=50; i<90; i++)
+{
+ Leftservo.write(i);
+}
+}
 void loop() 
 {
-foward();
+reverse();
 } 
