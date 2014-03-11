@@ -1,18 +1,27 @@
 #include <Servo.h> 
 
-Servo leftservo;
-Servo rightservo;
-
+Servo Rightservo;
+Servo Leftservo;
 
 void setup() 
 { 
-  leftservo.attach(10);
-  leftservo.write(90);
-  rightservo.attach(9);
-  rightservo.write(90);
+  Rightservo.attach(9,90,180);
+  Leftservo.attach(10,90,180);
 } 
 
-void loop() {
-leftservo.write(0);
-rightservo.write(0);
+void foward()
+{
+ for(int i=110; i<180; i++)
+ {
+  Rightservo.write(i);
+}
+for(int i=110; i<180; i++)
+{
+Leftservo.write(i);
+}  
+}
+
+void loop() 
+{
+foward();
 } 
