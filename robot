@@ -1,3 +1,4 @@
+
 #include <Servo.h> 
 
 Servo Rightservo;
@@ -30,7 +31,27 @@ void reverse(){
  Leftservo.write(i);
 }
 }
+
+void rightForward()
+{
+  for(int i=110; i<18; i++)
+{
+Leftservo.write(i);
+Rightservo.write(90);
+}
+}
+
+void leftForward()
+{
+  for(int i=50; i<90; i++)
+{
+Rightservo.write(i);
+Leftservo.write(90);
+}
+}
+
+
 void loop() 
 {
-reverse();
+leftForward();
 } 
