@@ -12,7 +12,7 @@ void setup()
 { 
   Rightservo.attach(9,90,180);
   Leftservo.attach(10,90,180);
-   Serial.begin(9600);
+  Serial.begin(9600);
   irrecv.enableIRIn();
 
 } 
@@ -41,39 +41,47 @@ void reverse(){
 
 void rightForward()
 {
-  for(int i=110; i<18; i++)
-{
-Leftservo.write(i);
-Rightservo.write(90);
-}
+ for(int i=50; i<90; i++)
+ {
+  Rightservo.write(i);
+ }
+ for(int i=110; i<180; i++)
+ {
+  Leftservo.write(i);
+ }
 }
 
 void leftForward()
 {
-  for(int i=50; i<90; i++)
-{
-Rightservo.write(i);
-Leftservo.write(90);
-}
+ for(int i=110; i<180; i++)
+ {
+  Rightservo.write(i);
+ }
+ for(int i=50; i<90; i++)
+ {
+  Leftservo.write(i);
+ }
 }
 
 
 void loop() 
 {
- if(irrecv.decode(&results)){
-  if(results.value==0x090){
-    forward();
-  }
-  else if(results.value==0x890){
-    reverse();
-  }
-   else if(results.value==0x490){
-     rightForward();
-   }
-   else if(results.value==0xC90){
-     leftForward();
-   }
-    for(int z=0; z<2; z++){
+  if (irrecv.decode(&results))
+  {
+    if (results.value==0x490)//volume up button
+    {
+      rightForward(); 
+    }
+    else if(results.value==0xC90) //Volume down button
+    {
+      leftForward();
+    }
+    else if(results.value==0x90) //Channel up button
+    {
+      forward();
+    }
+     for(int z=0; z<2; z++){
     irrecv.resume();
+  }
   }
 } 
