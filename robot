@@ -66,6 +66,7 @@ void leftForward()
 
 void loop() 
 {
+  
   if (irrecv.decode(&results))
   {
     if (results.value==0x490)//volume up button
@@ -79,6 +80,10 @@ void loop()
     else if(results.value==0x90) //Channel up button
     {
       forward();
+    }
+    else if(results.value==0x890) //Channel down button
+    {
+      reverse();
     }
      for(int z=0; z<2; z++){
     irrecv.resume();
